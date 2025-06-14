@@ -21,7 +21,7 @@
       <div class="popup-body">
         <div class="welcome-message">
           <p class="welcome-subtitle">Your Ultimate Educational Resource Hub</p>
-          <p class="welcome-description">Access comprehensive study materials including NCERT books, PYQs, notes, mock tests, and much more - all in one centralized platform.</p>
+          <p class="welcome-description">Upload, preview, and download PDF educational resources including NCERT books, PYQs, notes, mock tests, and study materials. Features include file preview, download tracking, and organized categorization.</p>
         </div>
         
         <div class="features-showcase">
@@ -161,6 +161,12 @@
       </div>
     </div>
 
+    <!-- Welcome Message -->
+    <div class="welcome-banner">
+      <h2>Welcome to PDF PLACE</h2>
+      <p>Your comprehensive platform for managing educational PDF resources. Upload, preview, download, and organize your study materials with ease.</p>
+    </div>
+
     <!-- Navigation Tabs -->
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="showTab('uploads')">📤 Uploads</button>
@@ -207,6 +213,7 @@
         <h2>📚 Your PDFs</h2>
         <div class="files-header">
           <button onclick="loadPDFs()">🔄 Refresh List</button>
+          <button onclick="clearStorageSpace()" class="secondary-btn">🧹 Clear Storage Space</button>
           <div class="storage-info">
             <span id="storageUsage">Storage: Loading...</span>
           </div>
@@ -293,10 +300,19 @@
       </div>
       <div class="modal-body">
         <div class="preview-container">
-          <iframe id="previewFrame" src="" width="100%" height="600px"></iframe>
-          <div class="preview-loading" id="previewLoading">
+          <iframe id="previewFrame" src="" width="100%" height="600px" style="border: none; border-radius: 8px;"></iframe>
+          <div class="preview-loading" id="previewLoading" style="display: none;">
             <div class="loading-spinner"></div>
             <p>Loading PDF...</p>
+          </div>
+          <div class="preview-error" id="previewError" style="display: none;">
+            <div class="error-state">
+              <div class="error-icon">❌</div>
+              <h3>Preview Error</h3>
+              <p id="previewErrorMessage">Unable to load PDF preview.</p>
+              <button onclick="retryPreview()" class="retry-btn">Try Again</button>
+              <button onclick="downloadCurrentPDF()" class="primary-btn" style="margin-left: 10px;">Download Instead</button>
+            </div>
           </div>
         </div>
       </div>
@@ -312,3 +328,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
